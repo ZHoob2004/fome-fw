@@ -36,6 +36,7 @@ or
  - "Extra idle air if throttle pressed" is replaced by "Dashpot air". The extra air is now also held while coasting (unless the coasting table is used), and is ramped out on return to idle instead of being removed at once. If you used it, re-enter the value under the new name. The hidden "air by RPM taper" settings are removed.
 
 ### Added
+ - High-resolution vehicle speed in the native CAN broadcast (`BASE4`, 0.01 km/h per bit), using previously unused bytes. The existing vehicle speed signal is unchanged.
  - SD card logs are now organized into `YYYY/MM/DD` folders when the real-time clock is set. If the clock is not set, logs are still written to the root of the card with a sequential name.
  - Fahrenheit temperature support: pick "Fahrenheit" under Settings > Temperature Units in TunerStudio and all temperature gauges, datalogs, sensor adjustments, and thermistor calibration points display in °F. The stored tune is unchanged (always Celsius internally), so switching units never resets your configuration and works on every supported board.
  - Clutch position sensor: an analog clutch pedal sensor reading 0% (released) to 100% (on the floor), with configurable voltages, gauges and datalog channels. Everything that uses the clutch up and/or down switches now supports the analog sensor as virtual up/down switches too.

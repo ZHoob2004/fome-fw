@@ -74,6 +74,7 @@ BO_ 515 BASE3: 8 Vector__XXX
  SG_ FuelLevel : 56|8@1+ (0.5,0) [0|0] "%" Vector__XXX
 
 BO_ 516 BASE4: 8 Vector__XXX
+ SG_ VehicleSpeedHighRes : 0|16@1+ (0.01,-1) [0|654.35] "kph" Vector__XXX
  SG_ OilPress : 16|16@1+ (0.03333333,0) [0|0] "kPa" Vector__XXX
  SG_ OilTemperature : 32|8@1+ (1,-40) [-40|215] "deg C" Vector__XXX
  SG_ FuelTemperature : 40|8@1+ (1,-40) [-40|215] "deg C" Vector__XXX
@@ -146,6 +147,7 @@ CM_ SG_ 515 AUX1Temp "Current Aux1 Temperature";
 CM_ SG_ 515 AUX2Temp "Current Aux2 Temperature";
 CM_ SG_ 515 MCUTemp "Current MCU Temperature";
 CM_ SG_ 515 FuelLevel "Current Fuel Level";
+CM_ SG_ 516 VehicleSpeedHighRes "Current vehicle speed at 0.01 kph resolution. Raw values 0-99 are reserved; older firmware transmits zero.";
 CM_ SG_ 516 OilPress "Current Oil Pressure Reading";
 CM_ SG_ 516 BattVolt "Current Battery Voltage Reading";
 CM_ SG_ 517 CylAM "Current Estimated Cylinder Airmass";

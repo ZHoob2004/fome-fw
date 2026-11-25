@@ -123,7 +123,7 @@ static void populateFrame(Sensors1& msg) {
 }
 
 struct Sensors2 {
-	uint8_t pad[2];
+	scaled_channel<uint16_t, 100> vssKphHighRes;
 
 	scaled_pressure oilPressure;
 	uint8_t oilTemp;
@@ -131,7 +131,11 @@ struct Sensors2 {
 	scaled_voltage vbatt;
 };
 
+static_assert(sizeof(Sensors2) == 8);
+
 static void populateFrame(Sensors2& msg) {
+	// Offset by 1 kph so raw values 0-99 remain reserved (older firmware sends zero).
+	msg.vssKphHighRes = std::clamp(Sensor::getOrZero(SensorType::VehicleSpeed), 0.0f, 654.35f) + 1.0f;
 	msg.oilPressure = Sensor::get(SensorType::OilPressure).value_or(-1);
 	msg.oilTemp = Sensor::getOrZero(SensorType::OilTemperature) + PACK_ADD_TEMPERATURE;
 	msg.fuelTemp = Sensor::getOrZero(SensorType::FuelTemperature) + PACK_ADD_TEMPERATURE;
